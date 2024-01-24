@@ -4,9 +4,28 @@ import tkinter as tk
 # The function responsible for adding character strings to the calculator display
 # to represent digits and operators.
 def button_click(entry):
-    current=calculator_screen.get()
+    current = calculator_screen.get()
     calculator_screen.delete(0, tk.END)
     calculator_screen.insert(tk.END, current + str(entry))
+
+
+# A function that cleans the calculator display.
+def button_clear():
+    calculator_screen.delete(0, tk.END)
+
+
+# A function that takes the contents from the display
+# and performs calculations using the 'eval' built-in function.
+def button_equal():
+    expression = calculator_screen.get()
+    try:
+        result = eval(expression)
+        calculator_screen.delete(0, tk.END)
+        calculator_screen.insert(tk.END, result)
+    except Exception as ex:
+        calculator_screen.delete(0, tk.END)
+        calculator_screen.insert(tk.END, "Error")
+
 
 # Create the main window.
 window = tk.Tk()
@@ -36,5 +55,5 @@ button_add = tk.Button(window, text="+", padx=padx, pady=pady, command=lambda: b
 button_subtract = tk.Button(window, text="-", padx=padx, pady=pady, command=lambda: button_click("-"))
 button_multiply = tk.Button(window, text="*", padx=padx, pady=pady, command=lambda: button_click("*"))
 button_divide = tk.Button(window, text="/", padx=padx, pady=pady, command=lambda: button_click("/"))
-button_equal = tk.Button(window, text="=", padx=padx, pady=pady)
-button_clear = tk.Button(window, text="C", padx=padx, pady=pady)
+button_equal = tk.Button(window, text="=", padx=padx, pady=pady, command=button_equal)
+button_clear = tk.Button(window, text="C", padx=padx, pady=pady, command=button_clear)
