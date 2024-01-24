@@ -1,6 +1,5 @@
 import tkinter as tk
 
-
 # The function responsible for adding character strings to the calculator display
 # to represent digits and operators.
 def button_click(entry):
@@ -57,3 +56,38 @@ button_multiply = tk.Button(window, text="*", padx=padx, pady=pady, command=lamb
 button_divide = tk.Button(window, text="/", padx=padx, pady=pady, command=lambda: button_click("/"))
 button_equal = tk.Button(window, text="=", padx=padx, pady=pady, command=button_equal)
 button_clear = tk.Button(window, text="C", padx=padx, pady=pady, command=button_clear)
+
+# Arrange the buttons on the grid.
+sticky = "nsew"
+
+button_7.grid(row=1, column=0, sticky=sticky)
+button_8.grid(row=1, column=1, sticky=sticky)
+button_9.grid(row=1, column=2, sticky=sticky)
+button_add.grid(row=1, column=3, sticky=sticky)
+
+button_4.grid(row=2, column=0, sticky=sticky)
+button_5.grid(row=2, column=1, sticky=sticky)
+button_6.grid(row=2, column=2, sticky=sticky)
+button_subtract.grid(row=2, column=3, sticky=sticky)
+
+button_1.grid(row=3, column=0, sticky=sticky)
+button_2.grid(row=3, column=1, sticky=sticky)
+button_3.grid(row=3, column=2, sticky=sticky)
+button_multiply.grid(row=3, column=3, sticky=sticky)
+
+button_0.grid(row=4, column=0, sticky=sticky)
+button_clear.grid(row=4, column=1, sticky=sticky)
+button_equal.grid(row=4, column=2, sticky=sticky)
+button_divide.grid(row=4, column=3, sticky=sticky)
+
+# Set equal column weights.
+window.grid_columnconfigure(0, weight=1)
+window.grid_columnconfigure(1, weight=1)
+window.grid_columnconfigure(2, weight=1)
+window.grid_columnconfigure(3, weight=1)
+
+# Set equal row weight for calculator_screen
+window.grid_rowconfigure(0, weight=1)
+
+# Start the main loop.
+window.mainloop()
